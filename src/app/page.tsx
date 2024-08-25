@@ -4,6 +4,20 @@ import HomeComponent from "./components/Home";
 import { getUser } from "@/services/db/api/user";
 import { fetchGuildMember, fetchGuilds } from "@/services/discord/api";
 import { GuildMember } from "@/services/discord/types";
+import { Metadata } from "next";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    title: "Monad Discord Auth Starter",
+    manifest: "/manifest.json",
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "default",
+      title: "Monad Discord Auth",
+    },
+    description: "Starter project for Discord authentication for Monad.",
+  };
+};
 
 export default async function Home() {
   const session = await auth();
