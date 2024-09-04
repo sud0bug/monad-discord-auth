@@ -1,14 +1,11 @@
 /** @type {import('next').NextConfig} */
-import runtimeCaching from "next-pwa/cache.js";
-import nextPWA from 'next-pwa';
+import nextPWA from '@ducanh2912/next-pwa';
 
 const withPWA = nextPWA({
-    dest: 'public',
-    cacheOnFrontEndNav: true,
-    register: true,
-    skipWaiting: true,
-    reloadOnOnline: true,
-    runtimeCaching,
+    fallbacks: {
+        // Failed page requests fallback to this.
+        document: "/offline",
+      },
 });
 
 const nextConfig = {};
