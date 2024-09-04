@@ -12,21 +12,7 @@ type HomeProps = {
 };
 
 export default function HomeComponent({ session, userIsPartOfMonad, userGuildMember }: HomeProps) {
-  useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker.register("/sw.js").then(
-          function (registration) {
-            console.log("Service Worker registration successful with scope: ", registration.scope);
-          },
-          function (err) {
-            console.log("Service Worker registration failed: ", err);
-          }
-        );
-      });
-    }
-  }, [])
-
+  
   const roles = userGuildMember?.roles || [];
   let roleNames = roles?.map((role) => {
     const potentialMonadRole = MONAD_ROLES[role as keyof typeof MONAD_ROLES];
